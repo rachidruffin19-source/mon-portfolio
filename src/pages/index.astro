@@ -1,0 +1,149 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Rachid Ruffin | Développeur Fullstack">
+  <main class="relative z-10 max-w-4xl mx-auto px-6 pt-32 pb-20">
+
+    <!-- HERO -->
+    <section class="text-center mb-28">
+      <div class="inline-block mb-6 px-4 py-1 rounded-full glass-card text-sm text-cyan-400 tracking-wide">
+        ✦ Ouvert aux opportunités
+      </div>
+      <h1 class="text-6xl font-bold mb-6 leading-tight">
+        Rachid Ruffin
+      </h1>
+      <p class="text-2xl font-light text-violet-300 mb-4">
+        <span id="typewriter"></span><span class="typewriter-cursor">|</span>
+      </p>
+      <p class="text-lg text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+        Je conçois des applications web modernes — du front au back.
+        Ma prédilection va au <strong class="text-slate-200">JavaScript</strong>,
+        mais je parle aussi couramment <strong class="text-slate-200">Python</strong> et <strong class="text-slate-200">PHP</strong>.
+      </p>
+      <div class="flex gap-4 justify-center flex-wrap">
+        <a href="#projets" class="btn-primary px-8 py-3 rounded-xl font-semibold text-white">
+          Voir mes projets →
+        </a>
+        <a href="#contact" class="btn-outlined px-8 py-3 rounded-xl font-semibold text-slate-300">
+          Me contacter
+        </a>
+      </div>
+    </section>
+
+    <!-- COMPÉTENCES -->
+    <section class="mb-28">
+      <h2 class="text-3xl font-bold mb-10">
+        Mes <span class="neon-text">Compétences</span>
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="glass-card p-6">
+          <h3 class="text-lg font-semibold mb-4 text-cyan-400">Frontend</h3>
+          <ul class="space-y-2 text-slate-400">
+            <li>⚡ HTML / CSS</li>
+            <li>⚡ JavaScript (ES6+)</li>
+            <li>⚡ React</li>
+          </ul>
+        </div>
+        <div class="glass-card p-6">
+          <h3 class="text-lg font-semibold mb-4 text-violet-400">Backend</h3>
+          <ul class="space-y-2 text-slate-400">
+            <li>⚡ Node.js</li>
+            <li>⚡ PHP</li>
+            <li>⚡ Python</li>
+          </ul>
+        </div>
+        <div class="glass-card p-6">
+          <h3 class="text-lg font-semibold mb-4 text-pink-400">Base de données</h3>
+          <ul class="space-y-2 text-slate-400">
+            <li>⚡ SQL (MySQL / PostgreSQL)</li>
+            <li>⚡ NoSQL (MongoDB)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJETS -->
+    <section id="projets" class="mb-28">
+      <h2 class="text-3xl font-bold mb-10">
+        Mes <span class="neon-text">Projets</span>
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="glass-card p-6">
+          <h3 class="text-xl font-bold mb-2 text-violet-300">Projet GitHub 1</h3>
+          <p class="text-slate-400 mb-4 leading-relaxed">
+            Description de ton projet. Remplace ce texte par celui de ton vrai projet.
+          </p>
+          <div class="flex gap-2 flex-wrap mb-4">
+            <span class="text-xs px-3 py-1 rounded-full bg-violet-900/40 text-violet-300">JavaScript</span>
+            <span class="text-xs px-3 py-1 rounded-full bg-cyan-900/40 text-cyan-300">Node.js</span>
+          </div>
+          <a href="https://github.com/rachidruffin19-source" target="_blank"
+             class="text-sm text-cyan-400 hover:text-cyan-300 transition">
+            Voir sur GitHub →
+          </a>
+        </div>
+        <div class="glass-card p-6">
+          <h3 class="text-xl font-bold mb-2 text-violet-300">Projet GitHub 2</h3>
+          <p class="text-slate-400 mb-4 leading-relaxed">
+            Description de ton deuxième projet. Remplace ce texte par le vrai contenu.
+          </p>
+          <div class="flex gap-2 flex-wrap mb-4">
+            <span class="text-xs px-3 py-1 rounded-full bg-violet-900/40 text-violet-300">React</span>
+            <span class="text-xs px-3 py-1 rounded-full bg-pink-900/40 text-pink-300">PHP</span>
+          </div>
+          <a href="https://github.com/rachidruffin19-source" target="_blank"
+             class="text-sm text-cyan-400 hover:text-cyan-300 transition">
+            Voir sur GitHub →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <h2 class="text-3xl font-bold mb-8">
+        Me <span class="neon-text">Contacter</span>
+      </h2>
+      <div class="glass-card p-8">
+        <p class="text-slate-400 mb-6 text-lg leading-relaxed">
+          Tu as un projet à développer ou une opportunité à partager ?<br/>
+          Je suis disponible et toujours prêt à collaborer.
+        </p>
+        <div class="flex gap-4 flex-wrap">
+          <a href="mailto:rachidruffin19@gmail.com"
+             class="btn-primary inline-block px-6 py-3 rounded-xl font-semibold text-white">
+            ✉️ Envoyer un email
+          </a>
+          <a href="https://github.com/rachidruffin19-source" target="_blank"
+             class="btn-outlined inline-block px-6 py-3 rounded-xl font-semibold text-slate-300">
+            GitHub
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <script>
+  const words = ['Développeur Fullstack', 'JavaScript Developer', 'React & Node.js', 'Builder of Things'];
+let wIndex = 0, cIndex = 1, deleting = false;
+const el = document.getElementById('typewriter');
+
+function type() {
+  const word = words[wIndex];
+  el.textContent = deleting ? word.slice(0, cIndex--) : word.slice(0, cIndex++);
+
+  if (!deleting && cIndex > word.length) { deleting = true; setTimeout(type, 1800); return; }
+  if (deleting && cIndex < 0) {
+    deleting = false;
+    wIndex = (wIndex + 1) % words.length;
+    cIndex = 1;
+    setTimeout(type, 200);
+    return;
+  }
+
+  setTimeout(type, deleting ? 45 : 85);
+}
+type();
+</script>
+</Layout>
