@@ -3,6 +3,7 @@ import '../styles/global.css';
 import Navbar from '../components/Navbar.astro';
 import SocialSidebar from '../components/SocialSidebar.astro';
 import StarField from '../components/StarField.astro';
+import PageIntro from '../components/PageIntro.astro';
 import { siteTitle, siteDescription, siteUrl, ogImage, twitterHandle } from '../data/seo';
 
 interface Props {
@@ -54,6 +55,9 @@ const { title } = Astro.props;
   <body>
     <!-- Skip to main content link for keyboard accessibility -->
     <a href="#main" class="skip-to-content">Aller au contenu principal</a>
+
+    <!-- Intro animation — premier élément chargé, couvre tout le reste -->
+    <PageIntro />
 
     <StarField />
     <Navbar />

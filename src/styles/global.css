@@ -459,10 +459,7 @@ body::after {
     padding: 0.7rem 1.5rem !important;
   }
 
-  /* StarField disable on very small screens */
-  #starfield {
-    display: none;
-  }
+  /* StarField : le JS gère le seuil et le nombre d'étoiles selon la taille d'écran */
 }
 
 /* Tablets and medium screens */

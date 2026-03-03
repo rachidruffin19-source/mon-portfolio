@@ -82,8 +82,10 @@ export function initStarfield(): void {
   }
 
   // Determine counts: mobile vs desktop
+  // 📚 LEÇON : 40 étoiles sur mobile = beau sans vider la batterie
+  //            820 sur desktop = riche visuellement
   const isMobile = window.innerWidth < 768;
-  const count = isMobile ? 200 : 820;
+  const count = isMobile ? 40 : 820;
 
   // Initialize sizes and stars
   setSize();
@@ -96,7 +98,7 @@ export function initStarfield(): void {
     const target = offscreenCtx ?? ctx;
     try {
       target.clearRect(0, 0, canvas.width, canvas.height);
-    } catch {}
+    } catch { }
 
     const scrollY = window.scrollY || 0;
 
@@ -160,6 +162,6 @@ export function initStarfield(): void {
     cancelAnimationFrame(rafId);
     try {
       window.removeEventListener('resize', onResize);
-    } catch {}
+    } catch { }
   });
 }
