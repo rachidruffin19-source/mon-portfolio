@@ -12,10 +12,10 @@ import tailwindcss from '@tailwindcss/vite';
  * En dev : tu vois localhost dans le navigateur, mais les meta tags utilisent cette valeur
  * En prod : tu déploies et tout est correct automatiquement
  *
- * ⚠️ À FAIRE : remplacer l'URL par ta vraie URL après le deploy Netlify/Vercel
+ * ✅ URL de production : https://mon-portfolio-rachid-ruffin.vercel.app
  */
 export default defineConfig({
-  site: 'https://rachidruffin.netlify.app',
+  site: 'https://mon-portfolio-rachid-ruffin.vercel.app',
   vite: {
     plugins: [tailwindcss()],
   },
