@@ -14,7 +14,9 @@ export function initStarfield(): void {
   if (!canvasEl) return;
   if (typeof window === 'undefined') return;
 
-  const minWidthToRun = 420; // disable on very small screens
+  // 320px = taille minimale d'un écran moderne (aucun téléphone raisonnable n'est en dessous)
+  // On ne coupe pas à 420 car iPhone SE = 375px, Samsung = 360px... tous blocked !
+  const minWidthToRun = 320;
   if (window.innerWidth < minWidthToRun) {
     canvasEl.style.display = 'none';
     return;
@@ -82,8 +84,6 @@ export function initStarfield(): void {
   }
 
   // Determine counts: mobile vs desktop
-  // 📚 LEÇON : 40 étoiles sur mobile = beau sans vider la batterie
-  //            820 sur desktop = riche visuellement
   const isMobile = window.innerWidth < 768;
   const count = isMobile ? 40 : 820;
 
