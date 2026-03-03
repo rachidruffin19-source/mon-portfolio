@@ -1,85 +1,77 @@
 ---
-/**
- * PageIntro — Animation d'entrée (Intro Animation / Page Loader)
- *
- * 📚 LEÇON — Qu'est-ce qu'une intro animation ?
- * C'est un overlay (couche par-dessus) qui couvre tout le site au démarrage,
- * affiche quelque chose de beau, puis disparaît pour révéler le contenu.
- *
- * sessionStorage : mémoire temporaire du navigateur, effacée à la fermeture de l'onglet.
- * On l'utilise pour ne jouer l'animation qu'UNE seule fois par session.
- *   → Nouvelle session = animation jouée
- *   → Refresh = pas de re-animation (déjà vue)
- */
+
 ---
 
 <div id="page-intro" aria-hidden="true">
-  <div class="intro-content">
-    <div class="intro-logo">
-      <span class="intro-name">RachidRuffin</span><span class="intro-tld">.dev</span>
+  <div class="pi-glow"></div>
+  <div class="pi-content">
+    <div class="pi-logo">
+      <span class="pi-name">RachidRuffin</span><span class="pi-tld">.dev</span>
     </div>
-    <div class="intro-line"></div>
+    <div class="pi-bar-wrap">
+      <div class="pi-bar"></div>
+    </div>
   </div>
 </div>
 
 <style>
+  /* ── Overlay ──────────────────────────────────────────── */
   #page-intro {
     position: fixed;
-    inset: 0; /* top:0 right:0 bottom:0 left:0 en une ligne */
-    z-index: 9999; /* Au-dessus de TOUT */
-    background: #080810;
+    inset: 0;
+    z-index: 9999;
+    background: #06060f;
     display: flex;
     align-items: center;
     justify-content: center;
-    /* État initial : visible */
-    opacity: 1;
-    transition: opacity 0.7s ease;
-    /* Empêche le scroll pendant l'animation */
-    pointer-events: all;
+    overflow: hidden;
+    pointer-events: none; /* jamais bloquant */
+    animation: pi-exit 0.8s 1.6s cubic-bezier(0.4, 0, 1, 1) forwards;
   }
 
-  /* Quand JS ajoute la classe .done → l'overlay disparaît */
-  #page-intro.done {
-    opacity: 0;
-    pointer-events: none; /* Plus cliquable une fois invisible */
+  @keyframes pi-exit {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      visibility: hidden;
+    }
   }
 
-  .intro-content {
+  /* ── Glow ambiant derrière le logo ────────────────────── */
+  .pi-glow {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.12) 0%, transparent 70%);
+    animation: pi-glow-pulse 1.6s ease infinite alternate;
+    pointer-events: none;
+  }
+
+  @keyframes pi-glow-pulse {
+    from {
+      transform: scale(0.85);
+      opacity: 0.6;
+    }
+    to {
+      transform: scale(1.1);
+      opacity: 1;
+    }
+  }
+
+  /* ── Contenu (logo + barre) ───────────────────────────── */
+  .pi-content {
+    position: relative;
     text-align: center;
-    animation: introFadeUp 0.7s ease both;
+    animation: pi-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
   }
 
-  .intro-logo {
-    font-size: clamp(2rem, 8vw, 4rem);
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    line-height: 1;
-    margin-bottom: 1rem;
-  }
-
-  .intro-name {
-    background: linear-gradient(135deg, #e2e8f0, #a78bfa);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .intro-tld {
-    color: #22d3ee;
-  }
-
-  /* Ligne gradient qui apparaît sous le logo */
-  .intro-line {
-    height: 2px;
-    background: linear-gradient(to right, transparent, #a78bfa, #22d3ee, transparent);
-    animation: introLineGrow 0.6s 0.4s ease both;
-    transform-origin: center;
-  }
-
-  @keyframes introFadeUp {
+  @keyframes pi-rise {
     from {
       opacity: 0;
-      transform: translateY(16px);
+      transform: translateY(20px);
     }
     to {
       opacity: 1;
@@ -87,42 +79,68 @@
     }
   }
 
-  @keyframes introLineGrow {
+  /* ── Logo ─────────────────────────────────────────────── */
+  .pi-logo {
+    font-size: clamp(2rem, 7vw, 3.5rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-bottom: 1.25rem;
+  }
+
+  .pi-name {
+    background: linear-gradient(135deg, #ffffff 30%, #a78bfa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .pi-tld {
+    background: linear-gradient(135deg, #a78bfa, #22d3ee);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ── Barre de progression stylisée ───────────────────── */
+  .pi-bar-wrap {
+    width: clamp(140px, 30vw, 280px);
+    height: 2px;
+    background: rgba(255, 255, 255, 0.07);
+    border-radius: 2px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
+  .pi-bar {
+    height: 100%;
+    width: 0%;
+    border-radius: 2px;
+    background: linear-gradient(to right, #a78bfa, #22d3ee);
+    /* La barre se remplit en 1.4s = durée avant le fade-out */
+    animation: pi-fill 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    box-shadow: 0 0 8px rgba(34, 211, 238, 0.5);
+  }
+
+  @keyframes pi-fill {
     from {
-      transform: scaleX(0);
-      opacity: 0;
+      width: 0%;
     }
     to {
-      transform: scaleX(1);
-      opacity: 1;
+      width: 100%;
     }
   }
 </style>
 
 <script type="module" is:inline>
   const intro = document.getElementById('page-intro');
-  if (!intro) return; // sécurité
+  if (!intro) return;
 
-  // Vérifier si l'intro a déjà été jouée cette session
-  const alreadySeen = sessionStorage.getItem('intro-seen');
-
-  if (alreadySeen) {
-    // Déjà vue → on cache immédiatement sans animation
+  if (sessionStorage.getItem('intro-seen')) {
     intro.style.display = 'none';
-  } else {
-    // Première visite de la session → jouer l'intro
-    // Marquer comme vue dans sessionStorage
-    sessionStorage.setItem('intro-seen', '1');
-
-    // Attendre que le CSS soit chargé, puis déclencher le fade-out
-    // 1400ms = temps d'appréciation du logo (700ms animation + 700ms pause)
-    setTimeout(() => {
-      intro.classList.add('done');
-
-      // Après la transition CSS (700ms), cacher complètement pour libérer le DOM
-      setTimeout(() => {
-        intro.style.display = 'none';
-      }, 700);
-    }, 1400);
+    return;
   }
+  sessionStorage.setItem('intro-seen', '1');
+  // Nettoyage DOM après fin de l'animation CSS (1.6s delay + 0.8s duration)
+  setTimeout(() => intro.remove(), 2600);
 </script>
