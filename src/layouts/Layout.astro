@@ -3,8 +3,11 @@ import '../styles/global.css';
 import Navbar from '../components/Navbar.astro';
 import SocialSidebar from '../components/SocialSidebar.astro';
 import StarField from '../components/StarField.astro';
+import { siteTitle, siteDescription, siteUrl, ogImage, twitterHandle } from '../data/seo';
 
-interface Props { title: string; }
+interface Props {
+  title: string;
+}
 const { title } = Astro.props;
 ---
 
@@ -13,26 +16,66 @@ const { title } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Portfolio Rachid Ruffin — Développeur Fullstack" />
+    <meta name="description" content={siteDescription} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
+    <title>{title || siteTitle}</title>
+
+    <!-- SEO / Open Graph -->
+    <link rel="canonical" href={siteUrl} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title || siteTitle} />
+    <meta property="og:description" content={siteDescription} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:url" content={siteUrl} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content={twitterHandle} />
+    <meta name="twitter:title" content={title || siteTitle} />
+    <meta name="twitter:description" content={siteDescription} />
+    <meta name="twitter:image" content={ogImage} />
   </head>
   <body>
+    <!-- Skip to main content link for keyboard accessibility -->
+    <a href="#main" class="skip-to-content">Aller au contenu principal</a>
+
     <StarField />
     <Navbar />
     <SocialSidebar />
-    <slot />
-    <script>
-  const glow = document.createElement('div');
-  glow.id = 'cursor-glow';
-  document.body.appendChild(glow);
+    <main id="main">
+      <slot />
+    </main>
 
-  document.addEventListener('mousemove', e => {
-    glow.style.left = e.clientX + 'px';
-    glow.style.top  = e.clientY + 'px';
-  });
-</script>
+    <!--
+      📚 LEÇON — Le bon pattern Astro pour les scripts d'initialisation DOM
+      
+      <script> sans is:inline = Vite bundle le fichier (tree-shaking, minification)
+      MAIS en dev, le timing peut être imprévisible.
+      
+      Solution officielle Astro : utiliser <script> bundlé + gérer le timing
+      DANS le module lui-même (avec DOMContentLoaded ou document.readyState).
+      C'est ce que cursorGlow.ts fait déjà — donc ça marche correctement.
+    -->
+    <script>
+      import { initCursorGlow } from '../scripts/cursorGlow';
+      initCursorGlow();
+    </script>
+    <script>
+      import { initScrollReveal } from '../scripts/scrollReveal';
+      initScrollReveal();
+    </script>
   </body>
 </html>

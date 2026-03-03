@@ -1,0 +1,40 @@
+---
+// SectionDivider — ligne gradient épurée, sans texte
+// Usage : <SectionDivider />
+---
+
+<div class="section-divider" aria-hidden="true">
+  <div class="divider-line-left"></div>
+  <div class="divider-dot"></div>
+  <div class="divider-line-right"></div>
+</div>
+
+<style>
+  .section-divider {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 0 0 3rem 0;
+  }
+
+  .divider-line-left {
+    flex: 0 0 2rem;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(139, 92, 246, 0.5));
+  }
+
+  .divider-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #a78bfa;
+    box-shadow: 0 0 8px rgba(167, 139, 250, 0.6);
+    flex-shrink: 0;
+  }
+
+  .divider-line-right {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, rgba(139, 92, 246, 0.5), transparent);
+  }
+</style>
