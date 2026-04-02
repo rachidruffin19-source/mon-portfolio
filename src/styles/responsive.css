@@ -1,0 +1,125 @@
+/* =============================
+   MOBILE — max 768px
+   ============================= */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem 1.5rem;
+  }
+
+  .nav-logo {
+    font-size: 1rem;
+  }
+
+  .nav-links {
+    display: none;
+    gap: 1rem;
+  }
+
+  .nav-links.active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: rgba(13, 13, 24, 0.95);
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .nav-links a {
+    font-size: 0.8rem;
+    padding: 0.5rem 0;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(10px, 10px);
+  }
+
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+  }
+
+  /* GitHub nav caché sur mobile */
+  .nav-github-btn {
+    display: none !important;
+  }
+
+  /* Social sidebar cachée sur mobile */
+  .social-sidebar {
+    display: none;
+  }
+
+  main {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  main section {
+    margin-bottom: 2rem !important;
+  }
+
+  h1 { font-size: 2.5rem !important; }
+  h2 { font-size: 1.75rem !important; }
+
+  .btn-primary,
+  .btn-outlined {
+    font-size: 0.9rem;
+    padding: 0.7rem 1.5rem !important;
+  }
+
+  .contact-btn {
+    width: 100%;
+    font-size: 0.83rem;
+  }
+}
+
+/* =============================
+   TABLETTE — 769px à 1024px
+   ============================= */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .navbar {
+    padding: 1.2rem 2rem;
+  }
+
+  .nav-links {
+    gap: 1.5rem;
+  }
+
+  .nav-links a {
+    font-size: 0.85rem;
+  }
+
+  .social-sidebar {
+    left: 1rem;
+  }
+
+  main section {
+    margin-bottom: 2.5rem !important;
+  }
+}
+
+/* =============================
+   DESKTOP — min 1025px
+   ============================= */
+@media (min-width: 1025px) {
+  .navbar {
+    padding: 1.2rem 2.5rem;
+  }
+
+  .nav-links {
+    gap: 2rem;
+  }
+
+  .social-sidebar {
+    display: flex;
+  }
+}

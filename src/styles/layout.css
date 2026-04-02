@@ -1,0 +1,193 @@
+/* =============================
+   NAVBAR
+   ============================= */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 2.5rem;
+  background: transparent;
+  backdrop-filter: none;
+  border-bottom: 1px solid transparent;
+  transition:
+    background 0.5s ease,
+    backdrop-filter 0.5s ease,
+    border-color 0.5s ease,
+    box-shadow 0.5s ease;
+}
+
+.nav-logo {
+  font-weight: 800;
+  font-size: 1.1rem;
+  text-decoration: none;
+  display: flex;
+  align-items: baseline;
+  gap: 0;
+}
+
+.logo-first {
+  background: linear-gradient(135deg, #e2e8f0, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+}
+
+.logo-tld {
+  color: #22d3ee;
+  font-weight: 600;
+  font-size: 1em;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-links a {
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: #a78bfa;
+}
+
+.nav-links a[aria-current='page'] {
+  color: #22d3ee;
+  border-bottom: 2px solid #22d3ee;
+  padding-bottom: 2px;
+}
+
+.nav-github-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.9rem;
+  border: 1px solid rgba(139, 92, 246, 0.35);
+  border-radius: 8px;
+  color: #94a3b8;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.nav-github-btn:hover {
+  border-color: #22d3ee;
+  color: #22d3ee;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  gap: 6px;
+}
+
+.hamburger span {
+  width: 24px;
+  height: 3px;
+  background: linear-gradient(135deg, #a78bfa, #22d3ee);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* =============================
+   SOCIAL SIDEBAR
+   ============================= */
+.social-sidebar {
+  position: fixed;
+  left: 1.5rem;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  z-index: 50;
+  animation: slideInLeft 0.8s ease 0.6s both;
+}
+
+.social-sidebar a {
+  color: #64748b;
+  display: flex;
+  transition: all 0.2s ease;
+}
+
+.social-sidebar a:hover {
+  color: #a78bfa;
+  transform: translateY(-3px);
+}
+
+.sidebar-line {
+  width: 1px;
+  height: 80px;
+  background: linear-gradient(to bottom, #a78bfa, transparent);
+}
+
+/* =============================
+   FOOTER
+   ============================= */
+.footer-main {
+  position: relative;
+  z-index: 10;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  margin-top: 4rem;
+  padding: 1.5rem 2rem;
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  font-size: 0.8rem;
+  color: #475569;
+}
+
+.footer-logo {
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.footer-sep {
+  color: #334155;
+}
+
+.footer-credit,
+.footer-copy {
+  color: #475569;
+}
+
+.footer-link {
+  color: #64748b;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-link:hover,
+.footer-top:hover {
+  color: #a78bfa;
+}
+
+.footer-top {
+  color: #64748b;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  font-weight: 500;
+}
