@@ -35,7 +35,7 @@ export function initTypewriter(selector = '#typewriter', words: string[] = []) {
         setTimeout(type, 1800);
         return;
       }
-      if (deleting && cIndex < 0) {
+      if (deleting && cIndex <= 0) {
         // Mot effacé → passer au suivant
         deleting = false;
         wIndex = (wIndex + 1) % words.length;

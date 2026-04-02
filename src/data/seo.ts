@@ -10,7 +10,7 @@ export const siteDescription =
  * ✔ En prod (Netlify/Vercel) : la plateforme peut surcharger via SITE env var
  * Résultat : canonical tag correct en toutes circonstances
  */
-export const siteUrl = import.meta.env.SITE ?? 'https://rachidruffin.netlify.app';
+export const siteUrl = import.meta.env.SITE ?? 'https://rachidruffin.vercel.app';
 
-export const ogImage = '/og-image.svg';
+export const ogImage = `${siteUrl}/og-image.svg`;
 export const twitterHandle = '@rachidruffin';

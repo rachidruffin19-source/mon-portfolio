@@ -12,13 +12,34 @@ export interface SocialLinks {
 }
 
 export interface SkillCategory {
-  title: string;
-  items: string[];
+  name: string;
+  color: 'cyan' | 'violet' | 'pink' | 'emerald';
+  items: Skill[];
+}
+
+export interface Skill {
+  name: string;
+  icon: string; // SVG path d=
+  color: string; // hex ou rgb
 }
 
 export interface Project {
   title: string;
   description: string;
-  link?: string;
+  tech: string[];
+  github?: string;
+  demo?: string;
+  visibility: 'public' | 'private';
+  featured?: boolean;
+}
+
+export interface TimelineItem {
+  type: 'experience' | 'education' | 'project';
+  title: string;
+  organization: string;
+  period: string;
+  description: string;
   tech?: string[];
+  link?: string;
+  current?: boolean;
 }
